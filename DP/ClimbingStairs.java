@@ -21,7 +21,12 @@ interface Solution {
 
 // ===== Recursion =====
 class Recursion implements Solution {
-  // implement
+  public int ans(int n) { return climbStairs(n); }
+
+    private int climbStairs(int n) {
+        if(n <= 1) return 1;
+        return climbStairs(n-1) + climbStairs(n-2);
+    }
 }
 
 // ===== Memoization =====
