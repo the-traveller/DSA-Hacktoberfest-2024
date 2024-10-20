@@ -46,7 +46,18 @@ class Memoize implements Solution {
 
 // ===== DP =====
 class DP implements Solution {
-  // implement
+  public int ans(int n) {
+        int[] dp = new int[n+1];
+        dp[0] = dp[1] = 1;
+        return climbStairs(n, dp);
+    }
+
+    private int climbStairs(int n, int[] dp) {
+        for(int i=2; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
 }
 
 public class Main {
