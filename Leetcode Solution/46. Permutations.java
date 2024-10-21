@@ -28,3 +28,34 @@
  *
  */
 
+
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList();
+
+        boolean visit[]=new boolean[nums.length];
+        List<Integer> per=new ArrayList();
+        solve(nums,per,ans,visit);
+        return ans;
+    }
+    public static void solve(int[] nums,List<Integer> per,List<List<Integer>> ans ,boolean[] visit)
+    {
+        if(per.size()==nums.length)
+        {
+            ans.add(new ArrayList(per));
+            return;
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            if(visit[i])
+                continue;
+            visit[i]=true;
+            per.add(nums[i]);
+            solve(nums,per,ans,visit);
+            per.remove(per.size()-1);
+            visit[i]=false;
+        }
+    }
+}
+
